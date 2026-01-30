@@ -1,0 +1,12 @@
+# Entorno virtual
+venv/
+
+# Base de datos local
+spaceannihilation.db
+
+# Cache de Python
+__pycache__/
+*.pyc
+
+# Configuración local
+.env

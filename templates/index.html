@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SpaceAnnihilation</title>
+</head>
+<body>
+    <h1>🚀 SpaceAnnihilation</h1>
+
+    {% if planet %}
+        <p><strong>Planeta:</strong> {{ planet["name"] }}</p>
+        <p><strong>Metal:</strong> {{ planet["metal"] }}</p>
+        <p><strong>Producción:</strong> {{ planet["metal_production"] }} / hora</p>
+        <p><strong>Última actualización:</strong> {{ planet["last_update"] }}</p>
+    {% else %}
+        <p>No hay planeta.</p>
+    {% endif %}
+
+</body>
+</html>
