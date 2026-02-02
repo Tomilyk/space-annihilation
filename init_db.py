@@ -11,6 +11,9 @@ CREATE TABLE planets (
     name TEXT NOT NULL,
     metal INTEGER NOT NULL,
     metal_production INTEGER NOT NULL,
+    metal_mine_level INTEGER NOT NULL,
+    building_type TEXT,
+    building_end_time TEXT,
     last_update TEXT NOT NULL
 )
 """)
@@ -18,11 +21,27 @@ CREATE TABLE planets (
 now = datetime.utcnow().isoformat()
 
 conn.execute("""
-INSERT INTO planets (name, metal, metal_production, last_update)
-VALUES (?, ?, ?, ?)
-""", ("Tierra", 500, 30, now))
+INSERT INTO planets (
+    name,
+    metal,
+    metal_production,
+    metal_mine_level,
+    building_type,
+    building_end_time,
+    last_update
+)
+VALUES (?, ?, ?, ?, ?, ?, ?)
+""", (
+    "Tierra",
+    1000,
+    60,
+    0,
+    None,
+    None,
+    now
+))
 
 conn.commit()
 conn.close()
 
-print("Base de datos inicializada con producción.")
+print("Base de datos inicializada con tiempo de construcción.")

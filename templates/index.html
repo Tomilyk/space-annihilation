@@ -5,6 +5,17 @@
     <title>SpaceAnnihilation</title>
 </head>
 <body>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
     <h1>🚀 SpaceAnnihilation</h1>
 
     {% if planet %}
@@ -14,6 +25,29 @@
         <p><strong>Última actualización:</strong> {{ planet["last_update"] }}</p>
     {% else %}
         <p>No hay planeta.</p>
+    {% endif %}
+
+    <hr>
+
+    <h2>🪨 Mina de Metal</h2>
+
+    {% if planet %}
+        <p><strong>Nivel actual:</strong> {{ planet["metal_mine_level"] }}</p>
+        <p><strong>Costo del siguiente nivel:</strong> {{ metal_mine_cost }} metal</p>
+    {% else %}
+        <p>No hay planeta.</p>
+    {% endif %}
+
+    {% if planet["building_type"] %}
+        <p>
+            ⏳ Construcción en progreso…
+            <br>
+            Tiempo restante: {{ remaining_seconds }} segundos
+        </p>
+    {% else %}
+        <form action="/upgrade/metal-mine" method="post">
+            <button type="submit">⬆️ Subir Mina de Metal</button>
+        </form>
     {% endif %}
 
 </body>
